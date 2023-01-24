@@ -72,7 +72,6 @@ export class App extends Component {
 
   render() {
     const { handleFilter, addPhone, removeContact } = this;
-    const { name, number } = this.state;
     const contacts = this.getFilteredContacts();
 
     return (
