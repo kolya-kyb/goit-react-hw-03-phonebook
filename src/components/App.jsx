@@ -52,8 +52,10 @@ export class App extends Component {
         name,
         number,
       };
+
       return { contacts: [newContact, ...contacts] };
     });
+    return true;
   };
 
   handleFilter = ({ target }) => {
@@ -72,6 +74,7 @@ export class App extends Component {
 
   render() {
     const { handleFilter, addPhone, removeContact } = this;
+    const { filter } = this.state;
     const contacts = this.getFilteredContacts();
 
     return (
@@ -80,7 +83,7 @@ export class App extends Component {
         <ContactForm onSubmit={addPhone} />
         <div>
           <h2>Contacts</h2>
-          <Filter handleChange={handleFilter} />
+          <Filter handleChange={handleFilter} filter={filter} />
           <ContactList contacts={contacts} removeContact={removeContact} />
         </div>
       </Wrapper>

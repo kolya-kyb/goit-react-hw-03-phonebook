@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 
 import { FilterWrapper } from './Filter.styled';
-const Filter = ({ handleChange }) => {
+const Filter = ({ handleChange, filter }) => {
   return (
     <FilterWrapper>
       <label>Find contacts by name</label>
       <input
         name="filter"
+        value={filter}
         onChange={handleChange}
         placeholder="Find contacts by name"
       />
