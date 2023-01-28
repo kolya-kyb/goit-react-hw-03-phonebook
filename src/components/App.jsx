@@ -18,6 +18,22 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('my-books'));
+    if (contacts?.length) {
+      // contacts && contacts.length
+      this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts.length !== contacts.length) {
+      console.log('Update contacts');
+      localStorage.setItem('my-books', JSON.stringify(contacts));
+    }
+  }
+
   removeContact = id => {
     this.setState(({ contacts }) => {
       const newContacts = contacts.filter(item => item.id !== id);
